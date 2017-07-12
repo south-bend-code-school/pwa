@@ -19,9 +19,15 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'hello',
+<script {{#typescript}}lang="ts"{{/typescript}}>
+{{#typescript}}
+import Vue from 'vue'
+import Component from 'vue-class-component'
+
+@Component
+export default class Hello extends Vue{{else}}
+export default{{/typescript}} {
+  name{{#typescript}} ={{else}}:{{/typescript}} 'hello'{{#unless typescript}},{{/unless}}
   data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     return {
       msg: 'Welcome to Your Vue.js PWA'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
